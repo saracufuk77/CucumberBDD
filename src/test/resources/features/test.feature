@@ -1,2 +1,0 @@
-Feature: wewef
-  Scenario: fwad
