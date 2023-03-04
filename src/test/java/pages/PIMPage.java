@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.CommonMethods;
 
 import static base.BaseClass.driver;
+import static utils.CommonMethods.*;
 
 public class PIMPage {
     @FindBy(id = "menu_pim_viewPimModule")
@@ -22,7 +23,11 @@ public class PIMPage {
     }
 
     public void navigateToAddEmployee(){
-        CommonMethods.click(PIM);
-        CommonMethods.click(addEmployee);
+        click(PIM);
+        click(addEmployee);
+    }
+    public void navigateToEmployeeList(){
+        click(PIM);
+        click(employeeList);
     }
 }
