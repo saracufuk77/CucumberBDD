@@ -13,7 +13,7 @@ public class SearchEmployeeSteps extends BaseClass {
 
     @Given("user logs in with valid admin credentials")
     public void user_logs_in_with_valid_admin_credentials() {
-        loginPage.loginToWebsite("username","password");
+        loginPage.loginToWebsiteviaConfigs("username","password");
     }
 
     @Given("user navigates to the employee list page")

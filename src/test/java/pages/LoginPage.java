@@ -35,8 +35,13 @@ public class LoginPage {
     }
 
     public void loginToWebsite(String user, String psswd){
-        CommonMethods.sendText(username, ConfigsReader.getProperties(user));
-        CommonMethods.sendText(password, ConfigsReader.getProperties(psswd));
+        CommonMethods.sendText(username, user);
+        CommonMethods.sendText(password, psswd);
+        CommonMethods.click(loginBtn);
+    }
+    public void loginToWebsiteviaConfigs(String user, String psswd){
+        CommonMethods.sendText(username, ConfigsReader.getProperties("username"));
+        CommonMethods.sendText(password, ConfigsReader.getProperties("password"));
         CommonMethods.click(loginBtn);
     }
 

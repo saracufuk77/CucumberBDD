@@ -45,4 +45,22 @@ public class AddEmployeePage extends BaseClass {
         sendText(uploadPhoto,ConfigsReader.getProperties(filePath));  //retrieving photo location
         click(saveButton);
     }
+
+    public void addEmployeeManuel(String empFirstName, String empLastName){
+        sendText(firstName, empFirstName);
+        sendText(lastName,empLastName);
+        click(saveButton);
+    }
+
+    public void addemployeeWithLoginCredentials(String emplFirstName, String emplLastName){
+        String emplPassword=randomStrongPassWord();
+        String emplUserName = emplFirstName+emplLastName.toUpperCase();
+        sendText(firstName,emplFirstName);
+        sendText(lastName,emplLastName);
+        click(createLoginDetailsCheckBox);
+        sendText(username,emplUserName);
+        sendText(password,emplPassword);
+        sendText(confirmPassword,emplPassword);
+        click(saveButton);
+    }
 }
