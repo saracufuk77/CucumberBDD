@@ -1,16 +1,22 @@
+@testingNow
 Feature: Searching existing employees
-  Scenario: Search for an employee by id
-    Given user is on the exelenter webpage
+  Background:
     And user logs in with valid admin credentials
     * user navigates to the employee list page
+
+
+  @smoke
+  Scenario: Search for an employee by id
+#    Given user is on the exelenter webpage         //This line can be replaced with the Hooks
     * user enters an existing employee id in the id-search field
     When user clicks on the search button
     Then the employee information is displayed on the employee list table
 
+
     Scenario: Search for an employee by name
-      Given user is on the exelenter webpage
-      And user logs in with valid admin credentials
-      And user navigates to the employee list page
+#      Given user is on the exelenter webpage
+#      And user logs in with valid admin credentials    <===this is no longer needed because of the Background
+#      And user navigates to the employee list page   <===this is no longer needed because of the Background
       And user enters an existing employee name in the employee name-search field
       When user clicks on the search button
       Then the employee information is displayed on the employee list table

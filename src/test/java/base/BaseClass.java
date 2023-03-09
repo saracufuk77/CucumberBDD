@@ -16,6 +16,7 @@ import java.time.Duration;
 //THIS CLASS IS USED TO LAUNCH AND QUIT THE BROWSER
 public class BaseClass extends CommonMethods {
     public static WebDriver driver;
+
     public static void setUp(){
         //1.way : hard coding (not recommended)
         //System.setProperty("Webdriver.chrome.driver",Constants.CHROME_DRIVER_PATH);
