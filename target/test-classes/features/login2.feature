@@ -11,3 +11,14 @@ Feature: Login Test
     When ess user logs in with valid credentials
     Then ess user logs in successfully
 
+  Scenario Outline:
+    When  user enters a valid "<username>" and a valid "<password>"
+    And user clicks on the login button
+    Then user logs in successfully and the "<message>" is displayed
+#    Then user logs in successfully and a message is displayed as "<Welcome UserFirstName>"
+    Examples:
+      | username | password |message  |
+      | Admin | Exelent2022Sdet! | Welcome Admin |
+      | EssUser | Ess@2023 | Welcome John |
+
+    #similar to DataProvider in TestNG

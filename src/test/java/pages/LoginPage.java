@@ -40,8 +40,8 @@ public class LoginPage {
         CommonMethods.click(loginBtn);
     }
     public void loginToWebsiteviaConfigs(String user, String psswd){
-        CommonMethods.sendText(username, ConfigsReader.getProperties("username"));
-        CommonMethods.sendText(password, ConfigsReader.getProperties("password"));
+        CommonMethods.sendText(username, ConfigsReader.getProperties(user));
+        CommonMethods.sendText(password, ConfigsReader.getProperties(psswd));
         CommonMethods.click(loginBtn);
     }
 
