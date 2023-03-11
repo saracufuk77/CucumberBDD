@@ -1,6 +1,8 @@
 package base;
 
+import io.cucumber.core.logging.Logger;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -25,6 +27,7 @@ public class BaseClass extends CommonMethods {
 
         //2.way : Soft Coding (Recommended)
         // I need filePath
+
 
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY,"true"); //if you dont want to see some red error messages in the output, put it true.
         System.setProperty(ChromeDriverService.CHROME_DRIVER_LOG_PROPERTY,"true");
