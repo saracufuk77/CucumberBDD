@@ -42,6 +42,7 @@ public class BaseClass extends CommonMethods {
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--headless");    //run in headless mode
 //                    options.addArguments("--disable-logging");
+//                      options.addArguments("--remote-allow-origins=*");
                     driver = new ChromeDriver(options);
                 } else {
                     driver = new ChromeDriver();
