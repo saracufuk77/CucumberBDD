@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
 //        ,tags = "@smoke"
 //        ,tags="@regression and @smoke" //testlerin uzerindeki annotationlari check edecek. regression ve smoke ise calisitracak. ikisi birden degilse calistirmayacak.
 //        ,tags="@regression or @smoke"    //testlerin uzerindeki annotationlari check edecek. regression ya da smoke ise calisitracak
-          ,tags = "@login2"
+//          ,tags = "@dataTable"
+
 )
 
 public class TestRunner {

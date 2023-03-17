@@ -45,4 +45,16 @@ public class SearchEmployeeSteps extends BaseClass {
         employeeListPage.searchEmployeebyName(expectedEmployeeName);
     }
 
+    @And("user enters an existing employee name {string} in the employee name-search field")
+    public void userEntersAnExistingEmployeeNameInTheEmployeeNameSearchField(String empName) {
+        wait(1);
+        employeeListPage.searchEmployeebyName(empName);
+    }
+
+
+    @And("user enters an existing employee id {string} in the id-search field")
+    public void userEntersAnExistingEmployeeIdInTheIdSearchField(String empID) {
+        wait(1);
+        employeeListPage.searchEmployeebyId(empID);
+    }
 }

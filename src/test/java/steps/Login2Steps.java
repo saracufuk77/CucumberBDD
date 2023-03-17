@@ -1,9 +1,13 @@
 package steps;
 
 import base.BaseClass;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import utils.ConfigsReader;
+
+import java.util.List;
+import java.util.Map;
 
 public class Login2Steps extends BaseClass {
     @When("admin user logs in with valid credentials")
@@ -56,6 +60,34 @@ public class Login2Steps extends BaseClass {
     public void userLogsInSuccessfullyAndTheIsDisplayed(String expectedMessage) {
         String actualMessage = dashboardPage.welcome.getText();
         Assert.assertEquals("User log in is NOT successful",expectedMessage,actualMessage);
+    }
+
+    @When("user enters login credentials")
+    public void user_enters_login_credentials(DataTable dataTable) {
+        List<Map<String, String>> mapList = dataTable.asMaps();
+        for (Map<String, String> userCredentials : mapList) {
+            if(userCredentials.get("Username")!=null){
+                sendText(loginPage.username,userCredentials.get("Username"));}
+            else {
+                loginPage.username.clear();
+                loginPage.username.sendKeys("");}
+
+            if(userCredentials.get("Password")!=null){
+                sendText(loginPage.password,userCredentials.get("Password"));}
+            else {
+                loginPage.password.clear();
+                loginPage.password.sendKeys("");}
+
+            loginPage.loginBtn.click();
+
+            //Assertion
+            Assert.assertEquals("Error messages does not match",userCredentials.get("ErrorMessage"),loginPage.LoginErrorMessage.getText());
+        }
+
+    }
+    @Then("login negative tests are successfull")
+    public void login_negative_tests_are_successfull() {
+
     }
 }
 
