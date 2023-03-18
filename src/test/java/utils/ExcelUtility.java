@@ -6,6 +6,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 //needed to import Apachi POI
 public class ExcelUtility {
@@ -78,4 +82,27 @@ public class ExcelUtility {
         }
         return data;
     }
+    //instead of inner loop we need to use Maps. (Big O notation)
+    //create a method for Maps version.
+
+    //Map version. Reading data from Excel using map, instead of inner loop (2D array)
+
+    public static List<Map<String,String>> readFromExcelMap(String filePath, String sheetName){
+        getFilePath(filePath);
+        getSheet(sheetName);
+
+        List<Map<String,String >> mapList = new ArrayList<>();
+
+        Map<String,String> map;
+        for (int i = 1; i < rowCount(); i++) {
+            map = new LinkedHashMap<>();
+            for (int j = 0; j < colsCount(); j++) {
+                map.put(getCell(0,j),getCell(i,j));
+            }
+            mapList.add(map);
+        }
+
+        return mapList;
+    }
+
 }

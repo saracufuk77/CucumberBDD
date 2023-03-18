@@ -5,6 +5,8 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import pages.AddEmployeePage;
+import utils.Constants;
+import utils.ExcelUtility;
 
 import java.util.List;
 import java.util.Map;
@@ -63,5 +65,28 @@ public class addMultipleEmployeesSteps extends BaseClass {
 
     }
 
+    @When("user enters employee data from the {string} sheet")
+    public void user_enters_employee_data_from_the_sheet(String sheetName) {
+        List<Map<String, String>> mapList = ExcelUtility.readFromExcelMap(Constants.TESTDATA_FILEPATH, sheetName);
+        for (Map<String, String> map : mapList) {
+            addEmployeePage.firstName.sendKeys(map.get("firstName"));
+            addEmployeePage.lastName.sendKeys(map.get("lastName"));
+            addEmployeePage.saveButton.click();
 
+            //validation
+            String expectedFullName=map.get("firstName")+" "+map.get("lastName");
+            String actualFullName=personalDetailsPage.employeeFullName.getText();
+            Assert.assertEquals("Name does not match",expectedFullName,actualFullName);
+            System.out.println(actualFullName+" is added successfully using Excel import");
+
+            // click add employee sub-menu again
+            if(!map.get("firstName").equals(mapList.get(mapList.size()-1).get("firstName"))){
+                pimPage.addEmployee.click();
+            }
+        }
+    }
+    @Then("new employee is added successfully using Excel import")
+    public void new_employee_is_added_successfully_using_excel_import() {
+        System.out.println("All new employees are added successfully using Excel import");
+    }
 }

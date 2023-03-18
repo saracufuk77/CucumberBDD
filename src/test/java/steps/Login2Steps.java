@@ -59,32 +59,35 @@ public class Login2Steps extends BaseClass {
     @Then("user logs in successfully and the {string} is displayed")
     public void userLogsInSuccessfullyAndTheIsDisplayed(String expectedMessage) {
         String actualMessage = dashboardPage.welcome.getText();
-        Assert.assertEquals("User log in is NOT successful",expectedMessage,actualMessage);
+        Assert.assertEquals("User log in is NOT successful", expectedMessage, actualMessage);
     }
 
     @When("user enters login credentials")
     public void user_enters_login_credentials(DataTable dataTable) {
         List<Map<String, String>> mapList = dataTable.asMaps();
         for (Map<String, String> userCredentials : mapList) {
-            if(userCredentials.get("Username")!=null){
-                sendText(loginPage.username,userCredentials.get("Username"));}
-            else {
+            if (userCredentials.get("Username") != null) {
+                sendText(loginPage.username, userCredentials.get("Username"));
+            } else {
                 loginPage.username.clear();
-                loginPage.username.sendKeys("");}
+//                loginPage.username.sendKeys("");     we do not need to keep this line. It can still works
+            }
 
-            if(userCredentials.get("Password")!=null){
-                sendText(loginPage.password,userCredentials.get("Password"));}
-            else {
+            if (userCredentials.get("Password") != null) {
+                sendText(loginPage.password, userCredentials.get("Password"));
+            } else {
                 loginPage.password.clear();
-                loginPage.password.sendKeys("");}
+//                loginPage.password.sendKeys("");
+            }
 
             loginPage.loginBtn.click();
 
             //Assertion
-            Assert.assertEquals("Error messages does not match",userCredentials.get("ErrorMessage"),loginPage.LoginErrorMessage.getText());
+            Assert.assertEquals("Error messages does not match", userCredentials.get("ErrorMessage"), loginPage.LoginErrorMessage.getText());
         }
 
     }
+
     @Then("login negative tests are successfull")
     public void login_negative_tests_are_successfull() {
 
