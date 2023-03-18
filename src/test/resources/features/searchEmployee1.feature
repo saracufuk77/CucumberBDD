@@ -5,7 +5,7 @@ Feature: Searching existing employees
     * user navigates to the employee list page
 
 
-  @smoke
+
   Scenario: Search for an employee by id
 #    Given user is on the exelenter webpage         //This line can be replaced with the Hooks
     * user enters an existing employee id in the id-search field

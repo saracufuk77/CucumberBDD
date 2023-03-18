@@ -40,6 +40,7 @@ public class Login2Steps extends BaseClass {
 
     @Then("ess user logs in successfully")
     public void ess_user_logs_in_successfully() {
+//        Assert.fail(); // intentionaly failed to check failed folder exist or not
         String expectedMessage = "Welcome John";
         String actualMessage = dashboardPage.welcome.getText();
         Assert.assertEquals("Ess user unable to sign in", expectedMessage, actualMessage);

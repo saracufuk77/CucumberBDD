@@ -6,7 +6,7 @@ Feature: Login Test
   Scenario: valid admin login
     When admin user logs in with valid credentials
     Then admin user logs in successfully
-
+@smoke
   Scenario: valid ess login
     When ess user logs in with valid credentials
     Then ess user logs in successfully
